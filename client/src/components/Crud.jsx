@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import axios from"axios"
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import View from "./View";
+import { Link } from 'react-router-dom'
+import { Newcontext } from "../App";
+
 
 const Crud = () => {
-  const [user, setUser] = useState([])
-
+    const [user,setUser] = useContext(Newcontext)
+console.log("hey",user[0])
     useEffect(() => {
         const fetchData=async()=>{
         try{
@@ -39,20 +45,27 @@ const Crud = () => {
             <th>Actions</th>
           </tr>
         </thead>
-        {user.map((display)=>{
+        {user.map((display,index)=>{
             return(
-        <tbody>
+        <tbody key={index}>
           <tr>
             <td>{display.Name}</td>
             <td>{display.Age}</td>
             <td>{display.Place}</td>
-            <td></td>
+            <td><ButtonGroup>
+                <Link to={`/view/${index}`}><Button variant="primary">View</Button></Link>
+      <Button variant="success">Edit</Button>
+      <Button variant="danger">Delete</Button>
+    </ButtonGroup></td>
           </tr>
         </tbody>
 )})}
       </Table>
+      <Link to={`/create`}><Button variant="warning">Create</Button></Link>
+
     </div>
   );
 };
 
 export default Crud;
+
