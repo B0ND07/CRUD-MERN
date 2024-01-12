@@ -11,6 +11,18 @@ import { Newcontext } from "../App";
 const Crud = () => {
     const [user,setUser] = useContext(Newcontext)
 console.log("hey",user[0])
+
+const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:5000/delete/" + id)
+      .then((res) => {
+        setUser((prevUser) => prevUser.filter((item) => item._id !== id));
+        console.log("res",res);
+
+      })
+      .catch((err) => console.log(err));
+  };
+
     useEffect(() => {
         const fetchData=async()=>{
         try{
@@ -55,7 +67,7 @@ console.log("hey",user[0])
             <td><ButtonGroup>
                 <Link to={`/view/${index}`}><Button variant="primary">View</Button></Link>
       <Button variant="success">Edit</Button>
-      <Button variant="danger">Delete</Button>
+      <Button onClick={()=>handleDelete(display._id)} variant="danger">Delete</Button>
     </ButtonGroup></td>
           </tr>
         </tbody>
