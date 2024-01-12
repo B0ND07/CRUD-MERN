@@ -1,13 +1,11 @@
-
+import Crud from "./components/Crud";
 
 function App() {
-
-
   return (
     <>
-      test
+      <Crud />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
