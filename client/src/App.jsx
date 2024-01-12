@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Crud from "./components/Crud";
 import View from "./components/View";
 import { createContext, useState } from "react";
+import Create from "./components/Create";
 const Newcontext = createContext(); 
 function App() {
   const [user, setUser] = useState([])
