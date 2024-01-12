@@ -6,6 +6,7 @@ const mongodb = require("./config/mongodb");
 const router = require("./router/router");
 
 mongodb();
+app.use(express.json())
 
 app.use("/", router);
 
