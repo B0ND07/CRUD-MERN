@@ -3,20 +3,20 @@ import Table from "react-bootstrap/Table";
 import axios from"axios"
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import View from "./View";
 import { Link } from 'react-router-dom'
 import { Newcontext } from "../App";
 
 
 const Crud = () => {
     const [user,setUser] = useContext(Newcontext)
-console.log("hey",user[0])
 
 const handleDelete = (id) => {
     axios
       .delete("http://localhost:5000/delete/" + id)
       .then((res) => {
-        setUser((prevUser) => prevUser.filter((item) => item._id !== id));
+        // setUser((user) => user.filter((item) => item._id !== id));
+        const filteredData=user.filter((item) => item._id !== id)
+        setUser(filteredData)
         console.log("res",res);
 
       })
@@ -35,16 +35,13 @@ const handleDelete = (id) => {
         }
     }
         fetchData()
-        
-    
-    
-       
       
     }, [])
-    useEffect(() => {
-        // This useEffect runs whenever the 'user' state changes
-        console.log("User state:", user);
-      }, [user]);
+    
+    // useEffect(() => {
+    //     // This useEffect runs whenever the 'user' state changes
+    //     console.log("User state:", user);
+    //   }, [user]);
     
   return (
     <div>
@@ -66,7 +63,7 @@ const handleDelete = (id) => {
             <td>{display.Place}</td>
             <td><ButtonGroup>
                 <Link to={`/view/${index}`}><Button variant="primary">View</Button></Link>
-      <Button variant="success">Edit</Button>
+                <Link to={`/update/${display._id}`}><Button variant="success">Edit</Button></Link>
       <Button onClick={()=>handleDelete(display._id)} variant="danger">Delete</Button>
     </ButtonGroup></td>
           </tr>

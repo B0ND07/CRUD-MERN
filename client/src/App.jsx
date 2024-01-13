@@ -2,7 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Crud from "./components/Crud";
 import View from "./components/View";
 import { createContext, useState } from "react";
-import Create from "./components/Create";
+import CreateComponent from "./components/Create";
+import Update from "./components/Update";
 const Newcontext = createContext(); 
 function App() {
   const [user, setUser] = useState([])
@@ -13,7 +14,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Crud/>}></Route> 
       <Route path="/view/:index" element={<View/>}></Route> 
-      <Route path="create" element={<Create />} />
+      <Route path="create" element={<CreateComponent />} />
+      <Route path="/update/:index" element={<Update />} />
       </Routes>
       </BrowserRouter>
       </Newcontext.Provider>
