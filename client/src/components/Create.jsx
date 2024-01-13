@@ -17,7 +17,6 @@ const CreateUser = () => {
   }
 
   async function handleForm() {
- 
     const display = await axios.post("http://localhost:5000/create", formData);
 
     console.log(display.data);

@@ -1,9 +1,12 @@
-const CrudSchema = require("../models/userSchema")
+const CrudSchema = require("../models/userSchema");
 
+const ReadData = async (req, res) => {
+  try {
+    const Read = await CrudSchema.find();
+    res.json(Read);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-const ReadData=async(req,res)=>{
-    const Read=await CrudSchema.find()
-    res.json(Read)
-}
-
-module.exports=ReadData
+module.exports = ReadData;

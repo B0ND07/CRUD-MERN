@@ -5,4 +5,4 @@ const mongodb = async () => {
   console.log("database connected");
 };
 
-module.exports=mongodb
+module.exports = mongodb;

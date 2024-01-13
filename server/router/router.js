@@ -5,12 +5,12 @@ const Delete = require("../controller/Delete");
 const Update = require("../controller/Update");
 const router = express.Router();
 
-router.route("/create").post(Create)
+router.route("/create").post(Create);
 
-router.route("/get").get(ReadData)
+router.route("/get").get(ReadData);
 
-router.route('/delete/:id').delete(Delete)
+router.route("/delete/:id").delete(Delete);
 
-router.route('/update/:id').put(Update)
+router.route("/update/:id").put(Update);
 
 module.exports = router;
